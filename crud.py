@@ -74,7 +74,21 @@ def get_instructor_by_id(instructor_id):
 def get_class_by_id(class_id):
 
     return Class.query.get(class_id)
-    
+
+def get_all_students():
+    """Return all students"""
+
+    return Student.query.all()
+
+def get_all_instructors():
+    """Return all instructors"""
+
+    return Instructor.query.all()
+
+def get_all_classes():
+    """return all classes"""
+
+    return Class.query.all()
 
 
 if __name__ == '__main__':
