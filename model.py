@@ -40,7 +40,7 @@ class Student(db.Model):
     def __repr__(self):
         """Show info about the student"""
 
-        return f"<Student student_id={self.student_id} name={self.f_name}>"
+        return f"<Student name={self.f_name, self.l_name} email={self.email}>"
     
 
     

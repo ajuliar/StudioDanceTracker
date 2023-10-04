@@ -36,7 +36,7 @@ def create_instructor(first_name, last_name, email, phone):
     return instructor
 
 
-def create_class(class_name, schedule, start_date, end_date):
+def create_class(class_name, schedule, start_date, end_date, instructor):
     """Create a new class"""
 
     a_class = Class(
@@ -44,6 +44,7 @@ def create_class(class_name, schedule, start_date, end_date):
         schedule=schedule,
         start_date=start_date,
         end_date=end_date,
+        instructor=instructor,
     )
 
     return a_class

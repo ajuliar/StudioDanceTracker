@@ -15,6 +15,14 @@ def homepage():
 
     return render_template('homepage.html')
 
+@app.route('/students')
+def all_students():
+    """view all students"""
+
+    students = crud.get_all_students()
+
+    return render_template("all_students.html", students=students)
+
 
 
 if __name__ == "__main__":

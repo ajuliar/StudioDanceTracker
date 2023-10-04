@@ -43,6 +43,20 @@ students = [
         "email": "john@student.com",
         "phone": "123-345-3344",
         "address": "123 Main St",
+    },
+    {
+        "f_name": "Sarah",
+        "l_name": "Brown",
+        "email": "sarah@student.com",
+        "phone": "123-345-5544",
+        "address": "456 Maple St",
+    },
+    {
+        "f_name": "Emily",
+        "l_name": "Jones",
+        "email": "emily@student.com",
+        "phone": "123-345-6677",
+        "address": "456 Birch St",
     }
 ]
 
@@ -78,8 +92,6 @@ instructors = [
         "phone": "321-345-6789",  
 
     }
-        
-        
 ]
 
 instructors_in_db = []
@@ -116,6 +128,18 @@ db_classes = [
         "schedule": "Tue, Thu - 4pm to 5pm",
         "start_date": "2023,01,25",
         "end_date": "2023,07,05",
+    },
+    {   
+        "class_name": "Hip Hop",
+        "schedule": "Tue, Thu - 5pm to 6pm",
+        "start_date": "2023,02,15",
+        "end_date": "2023,08,25",
+    },
+    {
+        "class_name": "Contemporary",
+        "schedule": "Mon, Wed - 4pm to 5pm",
+        "start_date": "2023,02,20",
+        "end_date": "2023,08,30",
     }
 ]
 
@@ -128,8 +152,10 @@ for db_class in db_classes:
         db_class["end_date"],
     )
 
-    class_database = crud.create_class(class_name, schedule, start_date, end_date)
+    class_database = crud.create_class(class_name, schedule, start_date, end_date, instructor=db_instructor)
+    class_database.students.append(db_student)
     classes_in_db.append(class_database)
+
 
 model.db.session.add_all(classes_in_db)
 model.db.session.commit()
