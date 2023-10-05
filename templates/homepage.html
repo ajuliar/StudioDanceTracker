@@ -14,7 +14,13 @@
   </ul>
 
   <h2> Create an account</h2>
-  <form action="/admins" method="POST">
+  <form action="/admins" method="POST" id="create_account">
+    <p>
+      First name <input type="text" name="fname">
+    </p>
+    <p>
+      Last name <input type="text" name="lname">
+    </p>
     <p>
       Email <input type="text" name="email">
     </p>
@@ -40,5 +46,7 @@
       <input type="submit"
     </p>
   </form>
+
+  <script src="/create-account.js"> </script>
 
 {% endblock %}

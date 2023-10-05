@@ -23,6 +23,8 @@ def get_admin():
 
     return render_template ("admin.html", admins=admins)
 
+
+
 @app.route("/admins", methods=["POST"])
 def register_admin():
     """Create an admin"""
@@ -43,6 +45,9 @@ def register_admin():
     
     return redirect("/")
 
+
+
+
 @app.route("/login", methods=["POST"])
 def admin_login():
 
@@ -61,6 +66,7 @@ def admin_login():
 
 
 
+
 @app.route("/students")
 def all_students():
     """view all students"""
@@ -70,6 +76,8 @@ def all_students():
     return render_template("all_students.html", students=students)
 
 
+
+
 @app.route("/students/<student_id>") 
 def show_student(student_id):
     """show details on a student"""
@@ -77,6 +85,25 @@ def show_student(student_id):
     student = crud.get_student_by_id(student_id)
 
     return render_template("student_details.html", student=student)
+
+
+@app.route("/students/create-student", methods=["POST"])
+def create_student():
+    """Create a new student"""
+
+    f_name = request.form.get("f_name")
+    l_name = request.form.get("l_name")
+    email = request.form.get("email")
+    phone = request.form.get("phone")
+    address = request.form.get("address")
+
+    student = crud.create_student(f_name, l_name, email, phone, address)
+
+    db.session.add(student)
+    db.session.commit()
+
+    return redirect("/students")
+
     
 
 @app.route("/classes")
