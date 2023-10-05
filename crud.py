@@ -65,12 +65,16 @@ def get_admin_by_id(admin_id):
 
 
 def get_student_by_id(student_id):
+    
 
     return Student.query.get(student_id)
+
+
 
 def get_instructor_by_id(instructor_id):
 
     return Instructor.query.get(instructor_id)
+
 
 def get_class_by_id(class_id):
 
