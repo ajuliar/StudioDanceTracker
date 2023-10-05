@@ -58,6 +58,9 @@ def enroll_student_class(student_id, class_id):
 
     return enrollment
 
+def get_all_admin():
+
+    return Admin.query.all()
 
 def get_admin_by_id(admin_id):
     

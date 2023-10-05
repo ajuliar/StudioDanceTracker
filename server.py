@@ -15,6 +15,15 @@ def homepage():
 
     return render_template('homepage.html')
 
+@app.route("/admins/<admin_id>")
+def get_admin(admin_id):
+    """View admin info"""
+
+    admin = crud.get_admin_by_id(admin_id)
+
+    return render_template ("admin.html", admin=admin)
+
+
 @app.route("/students")
 def all_students():
     """view all students"""
@@ -30,7 +39,6 @@ def show_student(student_id):
     
     student = crud.get_student_by_id(student_id)
 
-
     return render_template("student_details.html", student=student)
     
 
@@ -42,6 +50,7 @@ def all_classes():
 
     return render_template("all_classes.html", classes=classes)
 
+
 @app.route("/classes/<class_id>")
 def get_class(class_id):
     """Show details on a class"""
@@ -50,7 +59,13 @@ def get_class(class_id):
 
     return render_template("class_details.html", a_class=a_class)
 
+@app.route("/instructors")
+def all_instructors():
+    """View all instructors"""
 
+    instructors = crud.get_all_instructors()
+
+    return render_template("all_instructors.html", instructors=instructors)
 
 if __name__ == "__main__":
     connect_to_db(app)
