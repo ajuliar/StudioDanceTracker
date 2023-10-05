@@ -15,13 +15,50 @@ def homepage():
 
     return render_template('homepage.html')
 
-@app.route("/admins/<admin_id>")
-def get_admin(admin_id):
+@app.route("/admins")
+def get_admin():
     """View admin info"""
 
-    admin = crud.get_admin_by_id(admin_id)
+    admins = crud.get_all_admin()
 
-    return render_template ("admin.html", admin=admin)
+    return render_template ("admin.html", admins=admins)
+
+@app.route("/admins", methods=["POST"])
+def register_admin():
+    """Create an admin"""
+
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    admin = crud.get_admin_by_email
+
+    if admin:
+        flash("Cannot create account with that email. Please try again")
+    
+    else:
+        admin = crud.create_admin(email,password)
+        db.session.add(admin)
+        db.session.commit()
+        flash("Account created! Please log in.")
+    
+    return redirect("/")
+
+@app.route("/login", methods=["POST"])
+def admin_login():
+
+    email = request.form.get('email')
+    password = request.form.get("password")
+
+    admin = crud.get_admin_by_email(email)
+
+    if not admin and password != admin.password:
+        flash("Login incorrect")
+    else:
+        session["current_admin"] = admin.email
+        flash("Logged in")
+
+    return redirect("/")
+
 
 
 @app.route("/students")

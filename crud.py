@@ -98,6 +98,10 @@ def get_all_classes():
 
     return Class.query.all()
 
+def get_admin_by_email(email):
+
+    return Admin.query.filter(Admin.email == email).first()
+
 
 if __name__ == '__main__':
     from server import app
