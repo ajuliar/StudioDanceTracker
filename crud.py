@@ -103,6 +103,21 @@ def get_admin_by_email(email):
     return Admin.query.filter(Admin.email == email).first()
 
 
+
+def update_student(student_id, f_name, l_name, email, phone, address):
+
+    student= Student.query.get(student_id)
+
+    student.f_name = f_name
+    student.l_name = l_name
+    student.email = email
+    student.phone = phone
+    student.address = address
+    
+    return student
+    
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)

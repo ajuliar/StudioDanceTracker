@@ -15,6 +15,7 @@ def homepage():
 
     return render_template('homepage.html')
 
+
 @app.route("/admins")
 def get_admin():
     """View admin info"""
@@ -25,27 +26,25 @@ def get_admin():
 
 
 
-@app.route("/admins", methods=["POST"])
-def register_admin():
-    """Create an admin"""
+# @app.route("/admins", methods=["POST"])
+# def register_admin():
+#     """Create an admin"""
 
-    email = request.form.get("email")
-    password = request.form.get("password")
+#     email = request.form.get("email")
+#     password = request.form.get("password")
 
-    admin = crud.get_admin_by_email
+#     admin = crud.get_admin_by_email
 
-    if admin:
-        flash("Cannot create account with that email. Please try again")
+#     if admin:
+#         flash("Cannot create account with that email. Please try again")
     
-    else:
-        admin = crud.create_admin(email,password)
-        db.session.add(admin)
-        db.session.commit()
-        flash("Account created! Please log in.")
+#     else:
+#         admin = crud.create_admin(email,password)
+#         db.session.add(admin)
+#         db.session.commit()
+#         flash("Account created! Please log in.")
     
-    return redirect("/")
-
-
+#     return redirect("/")
 
 
 @app.route("/login", methods=["POST"])
@@ -102,7 +101,16 @@ def create_student():
     db.session.add(student)
     db.session.commit()
 
+    flash("Student information added successfully.")
+
     return redirect("/students")
+
+
+
+@app.route("/students/<student_id>/edit", methods=["POST"])
+def edit_student(student_id):
+
+
 
     
 
@@ -115,6 +123,27 @@ def all_classes():
     return render_template("all_classes.html", classes=classes)
 
 
+
+@app.route("/classes/create-classes", methods=["POST"])
+def create_classes():
+    """create a new class"""
+
+    class_name = request.form.get("class_name")
+    instructor_id = request.form.get("instructor_id")
+    schedule = request.form.get("schedule")
+    start_date = request.form.get("start_date")
+    end_date = request.form.get("end_date")
+
+    a_class = crud.create_class(class_name, instructor_id, schedule, start_date, end_date)
+
+    db.session.add(a_class)
+    db.session.commit()
+
+    flash("Class information added successfully.")
+
+    return redirect("/classes")
+
+
 @app.route("/classes/<class_id>")
 def get_class(class_id):
     """Show details on a class"""
@@ -123,6 +152,7 @@ def get_class(class_id):
 
     return render_template("class_details.html", a_class=a_class)
 
+
 @app.route("/instructors")
 def all_instructors():
     """View all instructors"""
@@ -130,6 +160,41 @@ def all_instructors():
     instructors = crud.get_all_instructors()
 
     return render_template("all_instructors.html", instructors=instructors)
+
+
+@app.route("/instructors/<instructor_id>")
+def get_instructor(instructor_id):
+    """Show instructors details"""
+
+    instructor = crud.get_instructor_by_id(instructor_id)
+
+    return render_template("instructor_details.html", instructor=instructor)
+
+
+@app.route("/instructors/create-instructor", methods=["POST"])
+def create_instructor():
+    """Add a new instructor"""
+
+    first_name = request.form.get("first_name")
+    last_name = request.form.get("last_name")
+    email = request.form.get("email")
+    phone = request.form.get("phone")
+
+    instructor = crud.create_instructor(first_name, last_name, email, phone)
+
+    db.session.add(instructor)
+    db.session.commit()
+
+    flash("Instructor added successfully")
+
+    return redirect("/instructors")
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     connect_to_db(app)
