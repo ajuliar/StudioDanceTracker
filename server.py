@@ -107,9 +107,28 @@ def create_student():
 
 
 
-@app.route("/students/<student_id>/edit", methods=["POST"])
+@app.route("/students/<student_id>/edit", methods=["GET", "POST"])
 def edit_student(student_id):
 
+    student = crud.get_student_by_id(student_id)
+    
+    if request.method == 'POST':
+        if student:
+            db.session.delete(student)
+            db.session.commit()
+
+            f_name = request.form["f_name"]
+            l_name = request.form["l_name"]
+            email = request.form["email"]
+            phone = request.form["phone"]
+            address = request.form["address"]
+
+            student = crud.update_student(f_name, l_name, email, phone, address)
+
+            db.session.add(student)
+            db.session.commit()
+
+    return redirect ("/students/<student_id>")
 
 
     
