@@ -113,6 +113,8 @@ def update_student(student_id, f_name, l_name, email, phone, address):
     student.email = email
     student.phone = phone
     student.address = address
+
+    db.session.commit()
     
     return student
     
