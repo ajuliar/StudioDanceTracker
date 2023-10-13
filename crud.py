@@ -36,27 +36,20 @@ def create_instructor(first_name, last_name, email, phone):
     return instructor
 
 
-def create_class(class_name, schedule, start_date, end_date, instructor):
+def create_class(class_name, instructor_id, schedule, start_date, end_date):
     """Create a new class"""
 
     a_class = Class(
         class_name=class_name,
+        instructor_id=instructor_id,
         schedule=schedule,
         start_date=start_date,
         end_date=end_date,
-        instructor=instructor,
+        
     )
 
     return a_class
 
-def enroll_student_class(student_id, class_id):
-
-    enrollment = StudentClass(
-        student_id=student_id,
-        class_id=class_id,
-    )
-
-    return enrollment
 
 def get_all_admin():
 
@@ -118,6 +111,23 @@ def update_student(student_id, f_name, l_name, email, phone, address):
     
     return student
     
+
+def update_class(class_id, class_name, schedule, start_date, end_date, instructor_id):
+
+    a_class = Class.query.get(class_id)
+
+    a_class.class_name = class_name
+    a_class.instructor_id = instructor_id
+    a_class.schedule = schedule
+    a_class.start_date = start_date
+    a_class.end_date = end_date
+    
+
+    db.session.commit()
+    
+    return a_class
+
+
 
 
 if __name__ == '__main__':

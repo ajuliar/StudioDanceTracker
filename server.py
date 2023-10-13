@@ -75,8 +75,6 @@ def all_students():
     return render_template("all_students.html", students=students)
 
 
-
-
 @app.route("/students/<student_id>") 
 def show_student(student_id):
     """show details on a student"""
@@ -115,7 +113,6 @@ def edit_student(student_id):
     if request.method == 'POST':
         if student:
     
-
             f_name = request.form["f_name"]
             l_name = request.form["l_name"]
             email = request.form["email"]
@@ -141,6 +138,14 @@ def all_classes():
     return render_template("all_classes.html", classes=classes)
 
 
+@app.route("/classes/<class_id>")
+def get_class(class_id):
+    """Show details on a class"""
+
+    a_class = crud.get_class_by_id(class_id)
+
+    return render_template("class_details.html", a_class=a_class)
+
 
 @app.route("/classes/create-classes", methods=["POST"])
 def create_classes():
@@ -162,13 +167,39 @@ def create_classes():
     return redirect("/classes")
 
 
-@app.route("/classes/<class_id>")
-def get_class(class_id):
-    """Show details on a class"""
+@app.route("/classes/<class_id>/edit", methods=["GET", "POST"])
+def edit_class(class_id):
 
     a_class = crud.get_class_by_id(class_id)
 
-    return render_template("class_details.html", a_class=a_class)
+    if request.method == 'POST':
+        if a_class:
+
+            class_name = request.form["class_name"]
+            instructor_id = request.form["instructor_id"]
+            schedule = request.form["schedule"]
+            start_date = request.form["start_date"]
+            end_date = request.form["end_date"]
+            
+
+            a_class = crud.update_class(class_id, class_name, schedule, start_date, end_date, instructor_id)
+
+            db.session.add(a_class)
+            db.session.commit()
+    
+    return redirect(f"/classes/{class_id}")
+
+
+@app.route("/classes/class-statistics/<class_id>")
+def class_stat():
+
+    a_class = crud.get_class_by_id
+
+    start_date = request.form.get("start_date")
+    end_date = request.form.get("end_date")
+
+    
+
 
 
 @app.route("/instructors")
@@ -206,7 +237,6 @@ def create_instructor():
     flash("Instructor added successfully")
 
     return redirect("/instructors")
-
 
 
 
