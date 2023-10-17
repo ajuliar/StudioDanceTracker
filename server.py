@@ -190,15 +190,27 @@ def edit_class(class_id):
     return redirect(f"/classes/{class_id}")
 
 
-@app.route("/classes/class-statistics/<class_id>")
+@app.route("/classes/class-statistics", methods=[ "GET","POST"])
 def class_stat():
+    """Filter students/classes with start date and end date"""
+    
+    student_total = 0
 
-    a_class = crud.get_class_by_id
+    if request.method == 'POST':
+        start_date = request.form.get("start_date")
+        end_date = request.form.get("end_date")
 
-    start_date = request.form.get("start_date")
-    end_date = request.form.get("end_date")
+        class_list = crud.get_all_classes_by_date(start_date, end_date)
+    
+
+        for a_class in class_list:
+            student_total += len(a_class.students)
 
     
+        return render_template("class_stats.html", student_total=student_total, start_date=start_date, end_date=end_date)
+    else:
+        return render_template("class_stats.html", student_total=student_total, start_date="", end_date="")
+            
 
 
 
@@ -238,6 +250,25 @@ def create_instructor():
 
     return redirect("/instructors")
 
+@app.route("/instructors/<instructor_id>/edit", methods=["GET", "POST"])
+def edit_instructor(instructor_id):
+
+    instructor = crud.get_instructor_by_id(instructor_id)
+
+    if request.method == 'POST':
+        if instructor:
+
+            first_name = request.form["first_name"]
+            last_name = request.form["last_name"]
+            email = request.form["email"]
+            phone = request.form["phone"]
+
+            instructor = crud.update_instructor(instructor_id, first_name, last_name, email, phone)
+
+            db.session.add(instructor)
+            db.session.commit()
+
+    return redirect (f"/instructors/{instructor_id}")
 
 
 

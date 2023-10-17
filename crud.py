@@ -91,6 +91,10 @@ def get_all_classes():
 
     return Class.query.all()
 
+def get_all_classes_by_date(start_date, end_date):
+
+    return Class.query.filter(Class.start_date >= start_date, Class.end_date <= end_date).all()
+
 def get_admin_by_email(email):
 
     return Admin.query.filter(Admin.email == email).first()
@@ -126,6 +130,19 @@ def update_class(class_id, class_name, schedule, start_date, end_date, instructo
     db.session.commit()
     
     return a_class
+
+def update_instructor(instructor_id, first_name, last_name, email, phone):
+
+    instructor = Instructor.query.get(instructor_id)
+
+    instructor.first_name = first_name
+    instructor.last_name = last_name
+    instructor.email = email
+    instructor.phone = phone
+
+    db.session.commit()
+
+    return instructor
 
 
 
