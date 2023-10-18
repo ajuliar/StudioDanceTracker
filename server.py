@@ -274,10 +274,36 @@ def edit_instructor(instructor_id):
 @app.route("/enroll-students")
 def enroll_students():
 
-    students = crud.get_all_students
-    classes = crud.get_all_classes
+    students = crud.get_all_students()
+    classes = crud.get_all_classes()
     
-    return render_template
+    return render_template("enroll-students.html", students=students, classes=classes)
+
+@app.route("/enroll-students", methods=["POST"])
+def add_class():
+
+    get_student = request.json.get("get_student")
+    get_class = request.json.get("get_class")
+
+    a_class = crud.get_class_by_id(get_class)
+    student = crud.get_student_by_id(get_student)
+
+    
+    if student not in a_class.students:
+        a_class.students.append(student)
+        
+    db.session.commit()
+
+    return {
+            "success": True,
+            "status": f"The student {student.f_name} has been enrolled to {a_class.class_name} class"
+        } 
+
+
+
+
+
+
 
 if __name__ == "__main__":
     connect_to_db(app)
