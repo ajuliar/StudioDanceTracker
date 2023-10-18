@@ -271,9 +271,13 @@ def edit_instructor(instructor_id):
     return redirect (f"/instructors/{instructor_id}")
 
 
+@app.route("/enroll-students")
+def enroll_students():
 
-
-
+    students = crud.get_all_students
+    classes = crud.get_all_classes
+    
+    return render_template
 
 if __name__ == "__main__":
     connect_to_db(app)
