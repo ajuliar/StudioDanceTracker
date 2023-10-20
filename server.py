@@ -314,15 +314,26 @@ def add_class():
 def calendar():
     return render_template("calendar.html", events=events)
 
-@app.route("/add-event", methods=["GET", "POST"])
+@app.route("/add-event", methods=["POST"])
 def add_event():
 
     if request.method == 'POST':
         title = request.form['title']
         start = request.form['start']
         end = request.form['end']
-    
-    return render_template("add_event.html")
+
+        if end == '':
+            end=start
+        
+        events.append({
+            'title': title,
+            'start': start,
+            'end': end,
+        })
+
+    db.session.commit()
+
+    return redirect("/calendar")
 
 
 
