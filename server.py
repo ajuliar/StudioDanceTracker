@@ -9,6 +9,19 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined 
 
+events = [
+    {
+        "title" : "TestEvent",
+        "start" : "2023-10-15",
+        "end" : "",
+    },
+    {
+        "title" : "Another TestEvent",
+        "start" : "2023-10-16",
+        "end" : "2023-10-17",
+    },
+]
+
 @app.route('/')
 def homepage():
     """View homepage"""
@@ -62,8 +75,6 @@ def admin_login():
         flash("Logged in")
 
     return redirect("/")
-
-
 
 
 @app.route("/students")
@@ -298,6 +309,21 @@ def add_class():
             "success": True,
             "status": f"The student {student.f_name} has been enrolled to {a_class.class_name} class"
         } 
+
+@app.route("/calendar")
+def calendar():
+    return render_template("calendar.html", events=events)
+
+@app.route("/add-event", methods=["GET", "POST"])
+def add_event():
+
+    if request.method == 'POST':
+        title = request.form['title']
+        start = request.form['start']
+        end = request.form['end']
+    
+    return render_template("add_event.html")
+
 
 
 
