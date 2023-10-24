@@ -1,4 +1,5 @@
 from flask import (Flask, render_template, request, flash, session, redirect)
+from flask_babel import Babel, gettext
 from model import connect_to_db, db
 import crud
 
@@ -7,24 +8,30 @@ from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 app.secret_key = "dev"
-app.jinja_env.undefined = StrictUndefined 
+app.jinja_env.undefined = StrictUndefined
 
-events = [
-    {
-        "title" : "TestEvent",
-        "start" : "2023-10-15",
-        "end" : "",
-    },
-    {
-        "title" : "Another TestEvent",
-        "start" : "2023-10-16",
-        "end" : "2023-10-17",
-    },
-]
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+babel = Babel(app)
+
+LANGUAGES = {
+    'en': 'English',
+    'pt': 'Portugues'
+}
+
+
+# @babel.localeselector
+def get_locale():
+    
+    return 'pt'
+
+babel.init_app(app, locale_selector=get_locale)
+
 
 @app.route('/')
 def homepage():
     """View homepage"""
+
+    
 
     return render_template('homepage.html')
 
@@ -69,10 +76,10 @@ def admin_login():
     admin = crud.get_admin_by_email(email)
 
     if not admin and password != admin.password:
-        flash("Login incorrect")
+        flash(gettext("Login incorrect"))
     else:
         session["current_admin"] = admin.email
-        flash("Logged in")
+        flash(gettext("Logged in"))
 
     return redirect("/")
 
@@ -110,7 +117,7 @@ def create_student():
     db.session.add(student)
     db.session.commit()
 
-    flash("Student information added successfully.")
+    flash(gettext("Student information added successfully."))
 
     return redirect("/students")
 
@@ -173,7 +180,7 @@ def create_classes():
     db.session.add(a_class)
     db.session.commit()
 
-    flash("Class information added successfully.")
+    flash(gettext("Class information added successfully."))
 
     return redirect("/classes")
 
@@ -257,7 +264,7 @@ def create_instructor():
     db.session.add(instructor)
     db.session.commit()
 
-    flash("Instructor added successfully")
+    flash(gettext("Instructor added successfully"))
 
     return redirect("/instructors")
 
@@ -312,29 +319,18 @@ def add_class():
 
 @app.route("/calendar")
 def calendar():
-    return render_template("calendar.html", events=events)
+    classes = crud.get_all_classes()
+    events = []
+    
+    for a_class in classes:
+        #second loop for day events
+        class_dict = {"title": a_class.class_name,
+                      "start": a_class.start_date,
+                      "end": a_class.end_date}
+        events.append(class_dict)
 
-@app.route("/add-event", methods=["POST"])
-def add_event():
-
-    if request.method == 'POST':
-        title = request.form['title']
-        start = request.form['start']
-        end = request.form['end']
-
-        if end == '':
-            end=start
         
-        events.append({
-            'title': title,
-            'start': start,
-            'end': end,
-        })
-
-    db.session.commit()
-
-    return redirect("/calendar")
-
+    return render_template("calendar.html", events=events)
 
 
 

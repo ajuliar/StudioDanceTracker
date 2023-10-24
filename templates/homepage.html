@@ -6,11 +6,12 @@
 
   <h2>Navigation:</h2>
   <ul>
-    <li><a href="/admins"> View Admin </a></li>
-    <li><a href="/students"> View all students</a></li>
-    <li><a href="/classes"> View all classes</a></li>
-    <li><a href="/instructors"> View all instructors</a></li>
-    <li><a href="/enroll-students"> Enroll Students</a></li>
+    <li><a href="/admins"> {{ _('View Admin') }} </a></li>
+    <li><a href="/students"> {{ _('View all students') }}</a></li>
+    <li><a href="/classes"> {{ _('View all classes') }}</a></li>
+    <li><a href="/instructors"> {{ _('View all instructors') }}</a></li>
+    <li><a href="/enroll-students"> {{ _('Enroll Students') }}</a></li>
+    <li><a href="/calendar">{{ _('Class Calendar') }}</a></li>
     
     
   </ul>
@@ -49,6 +50,6 @@
     </p>
   </form>
 
-  <script src="/create-account.js"> </script>
+
 
 {% endblock %}
