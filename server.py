@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+
 babel = Babel(app)
 
 LANGUAGES = {
@@ -21,7 +21,7 @@ LANGUAGES = {
 
 # @babel.localeselector
 def get_locale():
-    
+    print("get_locale")
     return 'pt'
 
 babel.init_app(app, locale_selector=get_locale)
@@ -314,7 +314,7 @@ def add_class():
 
     return {
             "success": True,
-            "status": f"The student {student.f_name} has been enrolled to {a_class.class_name} class"
+            "status": gettext("The student %(f_name)s has been enrolled to %(class_name)s class", f_name = student.f_name, class_name=a_class.class_name)
         } 
 
 @app.route("/calendar")
