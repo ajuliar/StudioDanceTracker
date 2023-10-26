@@ -13,16 +13,17 @@ app.jinja_env.undefined = StrictUndefined
 
 babel = Babel(app)
 
-LANGUAGES = {
+app.config['LANGUAGES'] = {
     'en': 'English',
     'pt': 'Portugues'
 }
 
 
-# @babel.localeselector
 def get_locale():
     print("get_locale")
-    return 'pt'
+
+    # return 'pt'
+    return request.accept_languages.best_match(app.config['LANGUAGES'].keys())
 
 babel.init_app(app, locale_selector=get_locale)
 
@@ -31,7 +32,6 @@ babel.init_app(app, locale_selector=get_locale)
 def homepage():
     """View homepage"""
 
-    
 
     return render_template('homepage.html')
 
@@ -43,28 +43,6 @@ def get_admin():
     admins = crud.get_all_admin()
 
     return render_template ("admin.html", admins=admins)
-
-
-
-# @app.route("/admins", methods=["POST"])
-# def register_admin():
-#     """Create an admin"""
-
-#     email = request.form.get("email")
-#     password = request.form.get("password")
-
-#     admin = crud.get_admin_by_email
-
-#     if admin:
-#         flash("Cannot create account with that email. Please try again")
-    
-#     else:
-#         admin = crud.create_admin(email,password)
-#         db.session.add(admin)
-#         db.session.commit()
-#         flash("Account created! Please log in.")
-    
-#     return redirect("/")
 
 
 @app.route("/login", methods=["POST"])
@@ -80,6 +58,16 @@ def admin_login():
     else:
         session["current_admin"] = admin.email
         flash(gettext("Logged in"))
+
+    return redirect("/")
+
+@app.route("/logout", methods=["POST"])
+def admin_logout():
+
+    if session.get("current_admin"):
+        del session["current_admin"]
+
+    flash(gettext('You have been logged out!'))
 
     return redirect("/")
 
@@ -144,6 +132,15 @@ def edit_student(student_id):
 
     return redirect (f"/students/{student_id}")
 
+@app.route("/students/<student_id>/delete", methods=['POST'])
+def delete_student(student_id):
+
+    student = crud.get_student_by_id(student_id)
+
+    db.session.delete(student)
+    db.session.commit()
+
+    return redirect("/students")
 
     
 
@@ -207,6 +204,17 @@ def edit_class(class_id):
     
     return redirect(f"/classes/{class_id}")
 
+@app.route("/classes/<class_id>/delete", methods=['POST'])
+def delete_class(class_id):
+
+    a_class = crud.get_class_by_id(class_id)
+
+    db.session.delete(a_class)
+    db.session.commit()
+
+    return redirect("/classes")
+
+
 
 @app.route("/classes/class-statistics", methods=[ "GET","POST"])
 def class_stat():
@@ -229,7 +237,6 @@ def class_stat():
     else:
         return render_template("class_stats.html", student_total=student_total, start_date="", end_date="")
             
-
 
 
 @app.route("/instructors")
@@ -289,6 +296,17 @@ def edit_instructor(instructor_id):
     return redirect (f"/instructors/{instructor_id}")
 
 
+@app.route("/instructors/<instructor_id>/delete", methods=['POST'])
+def delete_instructor(instructor_id):
+
+    instructor = crud.get_instructor_by_id(instructor_id)
+
+    db.session.delete(instructor)
+    db.session.commit()
+
+    return redirect("/instructors")
+
+
 @app.route("/enroll-students")
 def enroll_students():
 
@@ -324,10 +342,11 @@ def calendar():
     
     for a_class in classes:
         #second loop for day events
-        class_dict = {"title": a_class.class_name,
+        for event in events:
+            class_dict = {"title": a_class.class_name,
                       "start": a_class.start_date,
                       "end": a_class.end_date}
-        events.append(class_dict)
+            events.append(class_dict, event)
 
         
     return render_template("calendar.html", events=events)

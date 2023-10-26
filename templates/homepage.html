@@ -6,10 +6,10 @@
 
   <h2>{{ _('Navigation')}}:</h2>
   <ul>
-    <li><a href="/admins"> {{ _('View Admin') }} </a></li>
-    <li><a href="/students"> {{ _('View all students') }}</a></li>
-    <li><a href="/classes"> {{ _('View all classes') }}</a></li>
-    <li><a href="/instructors"> {{ _('View all instructors') }}</a></li>
+    <li><a href="/admins"> {{ _('Admin') }} </a></li>
+    <li><a href="/students"> {{ _('Students') }}</a></li>
+    <li><a href="/classes"> {{ _('Classes') }}</a></li>
+    <li><a href="/instructors"> {{ _('Instructors') }}</a></li>
     <li><a href="/enroll-students"> {{ _('Enroll Students') }}</a></li>
     <li><a href="/calendar">{{ _('Class Calendar') }}</a></li>
     
@@ -29,6 +29,12 @@
     </p>
   </form>
 
+  <form action="/logout" method="POST">
+    <p>
+      <button type="submit"> Logout </button>
+    </p>
+
+  </form>
 
 
 {% endblock %}
