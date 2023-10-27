@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title%} Students {% endblock%}
+
+{% block body %}
+    <h2> {{ _('List of Students') }}: </h2>
+{% for student in students %}
+    <li>
+        <a href="/students/{{student.student_id}}">
+        {{student.f_name}} {{student.email}}
+        </a>
+    </li>
+{% endfor %}
+
+<h2> {{ _('Add New Student') }}:</h2>
+<form action="/students/create-student" method="POST" id="create_student">
+    <label for="f_name"> {{ _('First name') }} </label>
+    <input type="text" name="f_name" id="f_name">
+
+    <label for="l_name"> {{ _('Last name') }} </label>
+    <input type="text" name="l_name" id="l_name">
+
+    <label for="stu_email"> {{ _('Email') }} </label>
+    <input type="text" name="email" id="stu_email">
+
+    <label for="stu_phone"> {{ _('Phone') }} </label>
+    <input type="text" name="phone" id="stu_phone">
+
+    <label for="stu_address"> {{ _('Address') }} </label>
+    <input type="text" name="address" id="stu_address">
+
+    <button type="submit">{{ _('add') }}</button>
+</form>
+
+
+
+
+{% endblock %}
+

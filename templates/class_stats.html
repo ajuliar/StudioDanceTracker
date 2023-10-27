@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Class Statistics {% endblock %}
+
+{% block body %}
+ <h2> {{ _('Class Statistics') }}: </h2>
+ <form action="/classes/class-statistics" method="POST">
+    <p> {{ _('Start Date') }}: <input type="date" name="start_date"></p>
+    <p> {{ _('End Date') }}: <input type="date" name="end_date"></p>
+
+    <button type="submit">{{ _('submit') }}</button>
+</form>
+
+<h3> {{ _('Statistics') }} </h3>
+
+    <li> {{ _('Start date') }}: {{start_date}} </li>
+    <li> {{ _('End date') }}: {{end_date}} </li>
+    <li> {{ _('Total of students') }}: {{student_total}} </li>
+
+{% endblock %}

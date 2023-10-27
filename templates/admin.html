@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Admin {% endblock %}
+
+{% block body %}
+    <h2> {{ _('Admin information') }}: </h2>
+{% for admin in admins %}
+
+
+    <ul>
+        <li> {{ _('Full name') }}: {{admin.fname }} {{ admin.lname }}  </li>
+        <li> {{ _('Email') }}: {{ admin.email }} </li>
+    </ul>
+{% endfor %}
+{% endblock %}

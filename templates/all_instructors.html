@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} Instructors {% endblock %}
+
+{% block body %}
+    <h2> {{ _('Instructors') }}: </h2>
+{% for instructor in instructors %}
+<li>
+    <a href="/instructors/{{instructor.instructor_id}}">
+    {{instructor.first_name}} {{instructor.last_name}}
+    </a>
+</li>
+{% endfor %}
+
+<h2> {{ _('Add new Instructor') }}:</h2>
+<form action="/instructors/create-instructor" method="POST" id="create_instructor">
+    <label for="first_name"> {{ _('First name') }} </label>
+    <input type="text" name="first_name" id="first_name">
+
+    <label for="last_name"> {{ _('Last name') }} </label>
+    <input type="text" name="last_name" id="last_name">
+
+    <label for="inst_email"> {{ _('Email') }} </label>
+    <input type="text" name="email" id="inst_email">
+
+    <label for="inst_phone"> {{ _('Phone') }} </label>
+    <input type="text" name="phone" id="inst_phone">
+
+    <button type="submit">{{ _('add') }}</button>
+</form>
+
+{% endblock %}

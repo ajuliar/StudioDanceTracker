@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{ instructor.instructor_id }} - Details{% endblock %}
+
+{% block body %}
+<h1>  {{instructor.first_name}} {{instructor.last_name}}</h1>
+<ul>
+    <li> {{ _('Email') }}: {{instructor.email}}</li>
+    <li> {{ _('Phone') }}: {{instructor.phone}}</li>
+</ul>
+
+<h2> {{ _('Edit instructor information') }}: </h2>
+<form action="/instructors/{{ instructor.instructor_id }}/edit" method="POST">
+    <p> {{ _('First name') }}: <input type="text" name="first_name" value="{{instructor.first_name}}"> </p>
+    <p> {{ _('Last name') }}: <input type="text" name="last_name" value="{{instructor.last_name}}"> </p>
+    <p> {{ _('Email') }}: <input type="text" name="email" value="{{instructor.email}}"> </p>
+    <p> {{ _('Phone') }}: <input type="text" name="phone" value="{{instructor.phone}}"> </p>
+       
+
+    <button type="submit">{{ _('edit') }}</button>
+
+</form>
+
+<hr>
+<form method="POST" action="/instructors/{{ instructor.instructor_id }}/delete">
+    <input type="submit" value="{{ _('Delete Instructor')}}"
+        onClick="return confirm ('Are you sure you want to delete this entry?')">
+</form>
+
+{% endblock %}

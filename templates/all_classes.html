@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title%} Classes {% endblock%}
+
+{% block body %}
+<h2> {{ _('List of Classes') }}: </h2>
+{% for class in classes %}
+    <li>
+        <a href="/classes/{{class.class_id}}">
+        {{class.class_name}}
+        </a>
+    </li>
+{% endfor %}
+
+<h2> {{ _('Add New Class') }}: </h2>
+<form action="/classes/create-classes" method="POST" id="create_class">
+    <label for="class_name">{{ _('Class name') }}</label>
+    <input type="text" name="class_name" id="class_name">
+
+    <label for="instructor_id">{{ _('Instructor id') }}</label>
+    <input type="text" name="instructor_id" id="instructor_id">
+
+    <label for="schedule">{{ _('Schedule') }}</label>
+    <input type="text" name="schedule" id="schedule">
+
+    <label for="start_date">{{ _('Start date') }}</label>
+    <input type="text" name="start_date" id="start_date">
+
+    <label for="end_date">{{ _('End date') }}</label>
+    <input type="text" name="end_date" id="end_date">
+
+
+    <button type="submit">{{ _('add') }}</button>
+</form>
+<h3>{{ _('Class statistics') }}</h3>
+<li><a href="/classes/class-statistics"> {{ _('View class statistics') }}</a></li>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title%} Enroll Students {% endblock%}
+
+{% block body %}
+<h3> {{ _('Enroll Students') }}: </h3>
+<select id="student-selector">
+    {% for student in students %}
+        <option value="{{student.student_id}}"> {{student.f_name}}</option>
+    {% endfor %}
+</select>
+
+<select id="class-selector">
+    {% for class in classes %}
+        <option value="{{class.class_id}}"> {{ class.class_name }}</option>
+    {% endfor %}
+</select>
+
+<input id="submit" type="submit" value="{{ _('enroll') }}">
+
+
+
+
+<script src="/static/add-class.js"> </script>
+
+{% endblock %}
