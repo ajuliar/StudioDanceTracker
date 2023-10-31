@@ -10,8 +10,9 @@
     </a>
 </li>
 {% endfor %}
+<br>
 
-<h2> {{ _('Add new Instructor') }}:</h2>
+<h2> {{ _('Add New Instructor') }}:</h2>
 <form action="/instructors/create-instructor" method="POST" id="create_instructor">
     <label for="first_name"> {{ _('First name') }} </label>
     <input type="text" name="first_name" id="first_name">

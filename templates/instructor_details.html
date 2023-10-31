@@ -9,7 +9,7 @@
     <li> {{ _('Email') }}: {{instructor.email}}</li>
     <li> {{ _('Phone') }}: {{instructor.phone}}</li>
 </ul>
-
+<br>
 <h2> {{ _('Edit instructor information') }}: </h2>
 <form action="/instructors/{{ instructor.instructor_id }}/edit" method="POST">
     <p> {{ _('First name') }}: <input type="text" name="first_name" value="{{instructor.first_name}}"> </p>

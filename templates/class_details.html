@@ -10,7 +10,7 @@
     <li> {{ _('Schedule') }}: {{a_class.schedule}}</li>
 </ul>
 
-
+<br>
 
 <h3> {{ _('List of students') }}: </h3>
 {% for student in a_class.students %}
@@ -18,7 +18,7 @@
         {{ student.f_name }}
     </li>
 {% endfor %}
-
+<br>
 
 <h2> {{ _('Edit class information') }}: </h2>
 <form action="/classes/{{ a_class.class_id }}/edit" method="POST">

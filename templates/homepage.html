@@ -2,19 +2,23 @@
 {% block title %}Dance Academy Home{% endblock %}
 
 {% block body %}
-  <h1>{{ _('Welcome to StudioDanceTracker!') }}</h1>
+  <h1>{{ _('Welcome!') }}</h1>
 
-  <h2>{{ _('Navigation')}}:</h2>
-  <ul>
-    <li><a href="/admins"> {{ _('Admin') }} </a></li>
-    <li><a href="/students"> {{ _('Students') }}</a></li>
-    <li><a href="/classes"> {{ _('Classes') }}</a></li>
-    <li><a href="/instructors"> {{ _('Instructors') }}</a></li>
-    <li><a href="/enroll-students"> {{ _('Enroll Students') }}</a></li>
-    <li><a href="/calendar">{{ _('Class Calendar') }}</a></li>
-    
-    
-  </ul>
+
+  <!-- <div class="container">
+    <nav class="navbar navbar-expand-xl nav-bar-light">
+    <h2>{{ _('Navigation')}}:</h2>
+    <ul>
+      <li><a href="/admins"> {{ _('Admin') }} </a></li>
+      <li><a href="/students"> {{ _('Students') }}</a></li>
+      <li><a href="/classes"> {{ _('Classes') }}</a></li>
+      <li><a href="/instructors"> {{ _('Instructors') }}</a></li>
+      <li><a href="/enroll-students"> {{ _('Enroll Students') }}</a></li>
+      <li><a href="/calendar">{{ _('Class Calendar') }}</a></li>
+    </ul>
+  </nav>
+</div> -->
+
 
   <h2> {{ _('Log In') }}: </h2>
   <form action="/login" method="POST">
@@ -35,6 +39,6 @@
     </p>
 
   </form>
-
+<link rel="stylesheet" href="/static/css/style.css"
 
 {% endblock %}

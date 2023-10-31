@@ -11,6 +11,7 @@
     </li>
 {% endfor %}
 
+<br>
 <h2> {{ _('Add New Class') }}: </h2>
 <form action="/classes/create-classes" method="POST" id="create_class">
     <label for="class_name">{{ _('Class name') }}</label>
@@ -31,6 +32,8 @@
 
     <button type="submit">{{ _('add') }}</button>
 </form>
+
+<br>
 <h3>{{ _('Class statistics') }}</h3>
 <li><a href="/classes/class-statistics"> {{ _('View class statistics') }}</a></li>
 {% endblock %}

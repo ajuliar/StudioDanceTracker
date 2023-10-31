@@ -342,13 +342,12 @@ def calendar():
     
     for a_class in classes:
         #second loop for day events
-        for event in events:
-            class_dict = {"title": a_class.class_name,
+        
+        class_dict = {"title": a_class.class_name,
                       "start": a_class.start_date,
                       "end": a_class.end_date}
-            events.append(class_dict, event)
+        events.append(class_dict)
 
-        
     return render_template("calendar.html", events=events)
 
 
