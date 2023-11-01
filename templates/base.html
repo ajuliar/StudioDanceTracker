@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
@@ -22,29 +23,28 @@
         {{ msg }}
       </p>
     {% endfor %}  
-    <!-- <nav class="navbar navbar-expand-lg bg-light ">
+    <nav class="navbar navbar-expand-lg bg-light justify-content-center ">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">StudioDanceTracker</a>
+        <a class="navbar-brand" href="/">StudioDanceTracker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" 
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <div class="navbar-nav ms-auto">
             <a class="nav-link" href="/admins"> {{ _('Admin') }}</a>
             <a class="nav-link" href="/students"> {{ _('Students') }}</a>
             <a class="nav-link" href="/classes"> {{ _('Classes') }}</a>
             <a class="nav-link" href="/instructors"> {{ _('Instructors') }}</a>
             <a class="nav-link" href="/enroll-students"> {{ _('Enroll Students') }}</a>
-            <a class="nav-link" <a href="/calendar">{{ _('Class Calendar') }}</a>
+            <a class="nav-link" href="/calendar">{{ _('Class Calendar') }}</a>
 
           </div>
         </div>
       </div>
-    </nav> -->
+    </nav>
 
-    <nav class="navbar navbar-expand-lg bg-light">
+    <!-- <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">StudioDanceTracker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
@@ -66,11 +66,11 @@
               <a class="nav-link" href="/instructors"> {{ _('Instructors') }}</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/classes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ _('Classes') }}
-              </a>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ _('Classes') }} -->
+              <!-- </a>
               <ul class="dropdown-menu">
-                <!-- <li><a class="dropdown-item" href="/classes"> {{ _('Classes') }}</a></li> -->
+                <li><a class="dropdown-item" href="/classes"> {{ _('Classes') }}</a></li>
                 <li><a class="dropdown-item" href="/enroll-students"> {{ _('Enroll Students') }}</a></li>
                 <li><a class="dropdown-item" href="/calendar">{{ _('Class Calendar') }}</a></li>
               </ul>
@@ -78,9 +78,9 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> -->
     {% block body %}{% endblock %}
-    
+
 
     {% block after_body %}{% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 

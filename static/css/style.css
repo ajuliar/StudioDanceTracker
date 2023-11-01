@@ -1,26 +1,22 @@
-/* All the colors you can customize for a navbar! */
-
-/* Navbar background */
-.navbar-custom-theme {
-  background: linear-gradient(to left, #f9d1d4, #d3cdec);
+.navbar-nav a {
+  float: left;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar-nav a:hover {
+  background-color: #D4C2FC;
+  color: rgb(143, 39, 137);
 }
 
-/* Color of the logo */
-.navbar-custom-theme .navbar-brand {
-  color: #4c518d;
+body {
+  background-color: #F9F5FF;
 }
 
-/* Color of logo when you hover on it */
-.navbar-custom-theme .navbar-brand:hover,
-.navbar-custom-theme .navbar-brand:focus {
-  color: white;
-}
-
-.navbar-custom-theme .nav-link {
-  color: #6b5f93;
-}
-
-.navbar-custom-theme .nav-link:hover,
-.navbar-custom-theme .nav-link:focus {
-  color: white;
+h1,
+h2,
+h3 {
+  font-family: 'Nunito', 'Helvetica', sans-serif;
+  color: #514488;
 }

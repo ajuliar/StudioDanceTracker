@@ -2,6 +2,9 @@
 {% block title%} Students {% endblock%}
 
 {% block body %}
+<div class="container text-left">
+    <div class="row">
+        <div class="col-md-4">
     <h2> {{ _('List of Students') }}: </h2>
 {% for student in students %}
     <li>
@@ -10,8 +13,14 @@
         </a>
     </li>
 {% endfor %}
-
+        </div>
+    </div>
+</div>
 <br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+
 <h2> {{ _('Add New Student') }}:</h2>
 <form action="/students/create-student" method="POST" id="create_student">
     <label for="f_name"> {{ _('First name') }} </label>
@@ -29,8 +38,11 @@
     <label for="stu_address"> {{ _('Address') }} </label>
     <input type="text" name="address" id="stu_address">
 
-    <button type="submit">{{ _('add') }}</button>
+    <button type="submit" class="btn btn-dark">{{ _('add') }}</button>
 </form>
+        </div>
+    </div>
+</div>
 
 
 

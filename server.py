@@ -53,13 +53,15 @@ def admin_login():
 
     admin = crud.get_admin_by_email(email)
 
-    if not admin and password != admin.password:
-        flash(gettext("Login incorrect"))
-    else:
+    if admin and password == admin.password:
         session["current_admin"] = admin.email
         flash(gettext("Logged in"))
+        
+    else:
+        flash(gettext("Login incorrect"))
+        return redirect("/")
 
-    return redirect("/")
+    return redirect("/admins")
 
 @app.route("/logout", methods=["POST"])
 def admin_logout():

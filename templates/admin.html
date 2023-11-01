@@ -2,13 +2,28 @@
 {% block title %} Admin {% endblock %}
 
 {% block body %}
-    <h2> {{ _('Admin information') }}: </h2>
+<div class="container text-left">
+    <div class="row">
+        <div class="col-md-4">
+    <h2> {{ _('Admin Information') }}: </h2>
+    
 {% for admin in admins %}
-
-
     <ul>
         <li> {{ _('Full name') }}: {{admin.fname }} {{ admin.lname }}  </li>
         <li> {{ _('Email') }}: {{ admin.email }} </li>
     </ul>
 {% endfor %}
+
+    <form action="/logout" method="POST">
+        <p>
+        <button type="submit" class="btn btn-primary"> Logout </button>
+        </p>
+
+    </form>
+        </div>
+        <div class="col-md-8">
+            <img class="img-fluid m-3" src="../static/images/jazz.jpg" alt="Group of girls dancing">
+        </div>  
+    </div>
+</div>
 {% endblock %}
