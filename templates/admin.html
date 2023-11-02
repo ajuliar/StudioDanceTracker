@@ -5,18 +5,21 @@
 <div class="container text-left">
     <div class="row">
         <div class="col-md-4">
-    <h2> {{ _('Admin Information') }}: </h2>
-    
-{% for admin in admins %}
-    <ul>
-        <li> {{ _('Full name') }}: {{admin.fname }} {{ admin.lname }}  </li>
-        <li> {{ _('Email') }}: {{ admin.email }} </li>
-    </ul>
-{% endfor %}
+
+        <section class="container mt-4"> 
+        <h2> {{ _('Admin Information') }}: </h2>
+        </section>  
+            
+        {% for admin in admins %}
+            <ul>
+                <li> {{ _('Full name') }}: {{admin.fname }} {{ admin.lname }}  </li>
+                <li> {{ _('Email') }}: {{ admin.email }} </li>
+            </ul>
+        {% endfor %}
 
     <form action="/logout" method="POST">
         <p>
-        <button type="submit" class="btn btn-primary"> Logout </button>
+        <button type="submit" class="btn btn-dark"> Logout </button>
         </p>
 
     </form>

@@ -3,47 +3,67 @@
 
 {% block body %}
 <div class="container text-left">
-    <div class="row">
-        <div class="col-md-4">
-    <h2> {{ _('List of Students') }}: </h2>
-{% for student in students %}
-    <li>
-        <a href="/students/{{student.student_id}}">
-        {{student.f_name}} {{student.email}}
-        </a>
-    </li>
-{% endfor %}
+    <div class="row input-fx my-4 align-items-center justify-content-center">
+        <div class="col-md-6">
+
+            <section class="container mt-4">   
+            <h2> {{ _('List of Students') }}: </h2>
+            </section> 
+
+            {% for student in students %}
+            <div class="container">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="/students/{{student.student_id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        {{student.f_name}} {{student.email}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
         </div>
-    </div>
-</div>
 <br>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
 
-<h2> {{ _('Add New Student') }}:</h2>
-<form action="/students/create-student" method="POST" id="create_student">
-    <label for="f_name"> {{ _('First name') }} </label>
-    <input type="text" name="f_name" id="f_name">
+<div class="col-md-6">
+    <section class="container mt-4">
+        <h2> {{ _('Add New Student') }}:</h2>
+    </section>
 
-    <label for="l_name"> {{ _('Last name') }} </label>
-    <input type="text" name="l_name" id="l_name">
-
-    <label for="stu_email"> {{ _('Email') }} </label>
-    <input type="text" name="email" id="stu_email">
-
-    <label for="stu_phone"> {{ _('Phone') }} </label>
-    <input type="text" name="phone" id="stu_phone">
-
-    <label for="stu_address"> {{ _('Address') }} </label>
-    <input type="text" name="address" id="stu_address">
-
-    <button type="submit" class="btn btn-dark">{{ _('add') }}</button>
-</form>
+    <form class="row g-3" action="/students/create-student" method="POST" id="create_student">
+        <div class="col-md-6">
+            <label for="f_name" class="form-label">{{ _('First name') }}</label>
+            <input type="text" class="form-control" name="f_name" id="f_name">
         </div>
+        <div class="col-md-6">
+            <label for="l_name" class="form-label">{{ _('Last name') }}</label>
+            <input type="text" class="form-control" name="l_name" id="l_name">
+        </div>
+        <div class="col-12">
+            <label for="stu_address" class="form-label">{{ _('Address') }} </label>
+            <input type="text" class="form-control" name="address" id="stu_address"placeholder="1234 Main St">
+        </div>
+        <div class="col-md-6">
+            <label for="stu_email" class="form-label">{{ _('Email') }}</label>
+            <input type="text" class="form-control" name="email" id="stu_email">
+        </div>
+        <div class="col-md-6">
+            <label for="stu_phone" class="form-label">{{ _('Phone') }} </label>
+            <input type="text" class="form-control" name="phone" id="stu_phone">
+        </div>
+        <div class="col-12 mb-4">
+            <button type="submit" class="btn btn-dark custom-margin">add</button>
+        </div>
+        
+    </form>
+</div>
+        
     </div>
 </div>
-
+<hr>
 
 
 

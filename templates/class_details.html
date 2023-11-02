@@ -1,44 +1,51 @@
 {% extends 'base.html' %}
 
 
-{% block title %}{{ a_class.class_id }} - Details{% endblock %}
+{% block title %}{{ a_class.class_id }} - Class Details{% endblock %}
 
 {% block body %}
-<h1> {{ a_class.class_name }}</h1>
-<ul>
-    <li> {{ _('Instructor') }}: {{a_class.instructor.first_name}}</li>
-    <li> {{ _('Schedule') }}: {{a_class.schedule}}</li>
-</ul>
-
+<div class="container text-left">
+    <div class="row input-fx my-4 align-items-center justify-content-center">
+        <div class="col-md-12" >
+            <h1> {{ a_class.class_name }}</h1>
+            <ul>
+                <li> {{ _('Instructor') }}: {{a_class.instructor.first_name}}</li>
+                <li> {{ _('Schedule') }}: {{a_class.schedule}}</li>
+            </ul>
+        </div>
+<br>
+<div class="col-md-8">
+    <h3> {{ _('List of students') }}: </h3>
+    {% for student in a_class.students %}
+        <li>
+            {{ student.f_name }}
+        </li>
+    {% endfor %}
+</div>
 <br>
 
-<h3> {{ _('List of students') }}: </h3>
-{% for student in a_class.students %}
-    <li>
-        {{ student.f_name }}
-    </li>
-{% endfor %}
-<br>
+<div class="col-md-4">
+    <h2> {{ _('Edit class information') }}: </h2>
+    <form action="/classes/{{ a_class.class_id }}/edit" method="POST">
+        <p> {{ _('Class name') }}: <input type="text" name="class_name" value="{{a_class.class_name}}"> </p>
+        <p> {{ _('Instructor') }}: <input type="text" name="instructor_id" value="{{a_class.instructor_id}}"> </p>
+        <p> {{ _('Schedule') }}: <input type="text" name="schedule" value="{{a_class.schedule}}"> </p>
+        <p> {{ _('Start date') }}: <input type="text" name="start_date" value="{{a_class.start_date}}"> </p>
+        <p> {{ _('End date') }}: <input type="text" name="end_date" value="{{a_class.end_date}}"> </p>
+        
 
-<h2> {{ _('Edit class information') }}: </h2>
-<form action="/classes/{{ a_class.class_id }}/edit" method="POST">
-    <p> {{ _('Class name') }}: <input type="text" name="class_name" value="{{a_class.class_name}}"> </p>
-    <p> {{ _('Instructor') }}: <input type="text" name="instructor_id" value="{{a_class.instructor_id}}"> </p>
-    <p> {{ _('Schedule') }}: <input type="text" name="schedule" value="{{a_class.schedule}}"> </p>
-    <p> {{ _('Start date') }}: <input type="text" name="start_date" value="{{a_class.start_date}}"> </p>
-    <p> {{ _('End date') }}: <input type="text" name="end_date" value="{{a_class.end_date}}"> </p>
-    
+        <button type="submit">{{ _('edit') }}</button>
 
-    <button type="submit">{{ _('edit') }}</button>
-
-</form>
+    </form>
+</div>
 
 <hr>
 <form method="POST" action="/classes/{{ a_class.class_id }}/delete">
     <input type="submit" value="{{ _('Delete Class')}}"
         onClick="return confirm ('Are you sure you want to delete this entry?')">
 </form>
-
+    </div>
+</div>
 
 
 {% endblock %}
