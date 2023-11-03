@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title%} Classes {% endblock%}
+{% block title%} {{ _('Classes') }} {% endblock%}
 
 {% block body %}
 <div class="container text-left">
@@ -56,7 +56,8 @@
             <input type="text" class="form-control" name="end_date" id="end_date"">
         </div>
         <div class="col-12 mb-4">
-            <button type="submit" class="btn btn-dark custom-margin">add</button>
+            <button type="submit" class="btn btn-dark custom-margin"
+            onClick="return confirm('{{ _('The class has been added') }}')">{{ _('add') }}</button>
         </div>
     
     </form>

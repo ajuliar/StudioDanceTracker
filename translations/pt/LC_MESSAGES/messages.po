@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-26 18:11-0500\n"
-"PO-Revision-Date: 2023-10-26 18:24-0500\n"
+"POT-Creation-Date: 2023-11-02 18:45-0500\n"
+"PO-Revision-Date: 2023-11-02 18:52-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -18,242 +18,270 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.0\n"
 
-#: server.py:55
-msgid "Login incorrect"
-msgstr "Login incorreto"
-
-#: server.py:58
+#: server.py:50
 msgid "Logged in"
 msgstr "Conectado"
 
-#: server.py:68
+#: server.py:53
+msgid "Login incorrect"
+msgstr "Login incorreto"
+
+#: server.py:64
 msgid "You have been logged out!"
 msgstr "Você foi desconectado!"
 
-#: server.py:106
+#: server.py:74 server.py:88 server.py:166 server.py:267 server.py:340
+#: server.py:374
+msgid "Please log in"
+msgstr "Por favor, faça login"
+
+#: server.py:122
 msgid "Student information added successfully."
 msgstr "Informações do aluno adicionadas com sucesso."
 
-#: server.py:178
+#: server.py:200
 msgid "Class information added successfully."
 msgstr "Informações da aula adicionadas com sucesso."
 
-#: server.py:272
+#: server.py:300
 msgid "Instructor added successfully"
 msgstr "Instrutor adicionado com sucesso"
 
-#: server.py:333
+#: server.py:367
 #, python-format
 msgid "The student %(f_name)s has been enrolled to %(class_name)s class"
 msgstr "O aluno %(f_name)s foi matriculado na aula %(class_name)s"
 
-#: templates/admin.html:5
-msgid "Admin information"
-msgstr "Informações do Administrador"
+#: templates/admin.html:2 templates/base.html:35
+msgid "Admin"
+msgstr "Administrador"
 
 #: templates/admin.html:10
+msgid "Admin Information"
+msgstr "Informações do Administrador"
+
+#: templates/admin.html:15
 msgid "Full name"
 msgstr "Nome completo"
 
-#: templates/admin.html:11 templates/all_instructors.html:22
-#: templates/all_students.html:22 templates/homepage.html:22
-#: templates/instructor_details.html:9 templates/instructor_details.html:17
-#: templates/student_details.html:11 templates/student_details.html:18
+#: templates/admin.html:16 templates/all_instructors.html:45
+#: templates/all_students.html:50 templates/instructor_details.html:15
+#: templates/instructor_details.html:37 templates/student_details.html:17
+#: templates/student_details.html:42
 msgid "Email"
 msgstr "Email"
 
-#: templates/all_classes.html:5
-msgid "List of Classes"
-msgstr "Lista de Aulas"
+#: templates/admin.html:22
+msgid "Log out"
+msgstr "Sair"
 
-#: templates/all_classes.html:14
-msgid "Add New Class"
-msgstr "Adicionar Aula"
-
-#: templates/all_classes.html:16 templates/class_details.html:25
-msgid "Class name"
-msgstr "Nome da Aula"
-
-#: templates/all_classes.html:19
-msgid "Instructor id"
-msgstr "ID do Instrutor"
-
-#: templates/all_classes.html:22 templates/class_details.html:10
-#: templates/class_details.html:27
-msgid "Schedule"
-msgstr "Horário"
-
-#: templates/all_classes.html:25 templates/calendar.html:16
-#: templates/class_details.html:28 templates/class_stats.html:17
-msgid "Start date"
-msgstr "Data de Início"
-
-#: templates/all_classes.html:28 templates/calendar.html:20
-#: templates/class_details.html:29 templates/class_stats.html:18
-msgid "End date"
-msgstr "Data de Término"
-
-#: templates/all_classes.html:32 templates/all_instructors.html:28
-#: templates/all_students.html:31
-msgid "add"
-msgstr "adicionar"
-
-#: templates/all_classes.html:34
-msgid "Class statistics"
-msgstr "Estatísticas da Aula"
-
-#: templates/all_classes.html:35
-msgid "View class statistics"
-msgstr "Estatísticas das Aulas"
-
-#: templates/all_instructors.html:5 templates/homepage.html:12
-msgid "Instructors"
-msgstr "Instrutores"
-
-#: templates/all_instructors.html:14
-msgid "Add new Instructor"
-msgstr "Adicionar Instrutor"
-
-#: templates/all_instructors.html:16 templates/all_students.html:16
-#: templates/instructor_details.html:15 templates/student_details.html:16
-msgid "First name"
-msgstr "Nome"
-
-#: templates/all_instructors.html:19 templates/all_students.html:19
-#: templates/instructor_details.html:16 templates/student_details.html:17
-msgid "Last name"
-msgstr "Sobrenome"
-
-#: templates/all_instructors.html:25 templates/all_students.html:25
-#: templates/instructor_details.html:10 templates/instructor_details.html:18
-#: templates/student_details.html:10 templates/student_details.html:19
-msgid "Phone"
-msgstr "Telefone"
-
-#: templates/all_students.html:5
-msgid "List of Students"
-msgstr "Lista de Alunos"
-
-#: templates/all_students.html:14
-msgid "Add New Student"
-msgstr "Adicionar Aluno"
-
-#: templates/all_students.html:28 templates/student_details.html:9
-#: templates/student_details.html:20
-msgid "Address"
-msgstr "Endereço"
-
-#: templates/calendar.html:11
-msgid "Event title"
-msgstr "Título do Evento\""
-
-#: templates/calendar.html:23
-msgid "Submit"
-msgstr "Enviar"
-
-#: templates/class_details.html:9 templates/class_details.html:26
-msgid "Instructor"
-msgstr "Instrutor"
-
-#: templates/class_details.html:15
-msgid "List of students"
-msgstr "Lista de Alunos"
-
-#: templates/class_details.html:23
-msgid "Edit class information"
-msgstr "Editar informações da aula"
-
-#: templates/class_details.html:32 templates/instructor_details.html:21
-#: templates/student_details.html:22
-msgid "edit"
-msgstr "editar"
-
-#: templates/class_details.html:38
-msgid "Delete Class"
-msgstr "Deletar Aula"
-
-#: templates/class_details.html:39 templates/instructor_details.html:28
-#: templates/student_details.html:29
-msgid "Are you sure you want to delete this entry?"
-msgstr "Tem certeza de que deseja excluir?"
-
-#: templates/class_stats.html:7
-msgid "Class Statistics"
-msgstr "Estatísticas da Aula"
-
-#: templates/class_stats.html:9
-msgid "Start Date"
-msgstr "Data de Início"
-
-#: templates/class_stats.html:10
-msgid "End Date"
-msgstr "Data de Término"
-
-#: templates/class_stats.html:12
-msgid "submit"
-msgstr "enviar"
-
-#: templates/class_stats.html:15
-msgid "Statistics"
-msgstr "Estatísticas"
-
-#: templates/class_stats.html:19
-msgid "Total of students"
-msgstr "Total de Alunos"
-
-#: templates/enroll-students.html:6 templates/homepage.html:13
-msgid "Enroll Students"
-msgstr "Matricular Alunos"
-
-#: templates/enroll-students.html:19
-msgid "enroll"
-msgstr "matricular"
-
-#: templates/homepage.html:5
-msgid "Welcome to StudioDanceTracker!"
-msgstr "Bem-vindo ao StudioDanceTracker!"
-
-#: templates/homepage.html:7
-msgid "Navigation"
-msgstr "Navegação"
-
-#: templates/homepage.html:9
-msgid "Admin"
-msgstr "Administradores"
-
-#: templates/homepage.html:10
-msgid "Students"
-msgstr "Alunos"
-
-#: templates/homepage.html:11
+#: templates/all_classes.html:2 templates/base.html:37
 msgid "Classes"
 msgstr "Aulas"
 
-#: templates/homepage.html:14
+#: templates/all_classes.html:10
+msgid "List of Classes"
+msgstr "Lista de Aulas"
+
+#: templates/all_classes.html:34
+msgid "Add New Class"
+msgstr "Adicionar Nova Aula"
+
+#: templates/all_classes.html:39 templates/class_details.html:44
+msgid "Class name"
+msgstr "Nome da Aula"
+
+#: templates/all_classes.html:43
+msgid "Instructor id"
+msgstr "ID do Instrutor"
+
+#: templates/all_classes.html:47 templates/class_details.html:16
+#: templates/class_details.html:52
+msgid "Schedule"
+msgstr "Horário"
+
+#: templates/all_classes.html:51 templates/class_details.html:56
+#: templates/class_stats.html:32
+msgid "Start date"
+msgstr "Data de Início"
+
+#: templates/all_classes.html:55 templates/class_details.html:60
+#: templates/class_stats.html:33
+msgid "End date"
+msgstr "Data de Término"
+
+#: templates/all_classes.html:60
+msgid "The class has been added"
+msgstr "A aula foi adicionada"
+
+#: templates/all_classes.html:60 templates/all_instructors.html:54
+#: templates/all_students.html:59
+msgid "add"
+msgstr "adicionar"
+
+#: templates/all_classes.html:67 templates/class_stats.html:4
+#: templates/class_stats.html:11
+msgid "Class Statistics"
+msgstr "Estatísticas da Aula"
+
+#: templates/all_classes.html:75
+msgid "View class statistics"
+msgstr "Ver estatísticas da aula"
+
+#: templates/all_instructors.html:2 templates/all_instructors.html:10
+#: templates/base.html:38
+msgid "Instructors"
+msgstr "Instrutores"
+
+#: templates/all_instructors.html:31
+msgid "Add New Instructor"
+msgstr "Adicionar Novo Instrutor"
+
+#: templates/all_instructors.html:36 templates/all_students.html:38
+#: templates/instructor_details.html:28 templates/student_details.html:30
+msgid "First name"
+msgstr "Nome"
+
+#: templates/all_instructors.html:40 templates/all_students.html:42
+#: templates/instructor_details.html:32 templates/student_details.html:34
+msgid "Last name"
+msgstr "Sobrenome"
+
+#: templates/all_instructors.html:49 templates/all_students.html:54
+#: templates/instructor_details.html:16 templates/instructor_details.html:41
+#: templates/student_details.html:16 templates/student_details.html:46
+msgid "Phone"
+msgstr "Telefone"
+
+#: templates/all_instructors.html:54 templates/all_students.html:59
+msgid "The instructor has been added"
+msgstr "O instrutor foi adicionado"
+
+#: templates/all_students.html:2 templates/base.html:36
+msgid "Students"
+msgstr "Alunos"
+
+#: templates/all_students.html:10 templates/class_details.html:22
+msgid "List of Students"
+msgstr "Lista de Alunos"
+
+#: templates/all_students.html:33
+msgid "Add New Student"
+msgstr "Adicionar Novo Aluno"
+
+#: templates/all_students.html:46 templates/student_details.html:15
+#: templates/student_details.html:38
+msgid "Address"
+msgstr "Endereço"
+
+#: templates/base.html:39 templates/enroll-students.html:3
+#: templates/enroll-students.html:10
+msgid "Enroll Students"
+msgstr "Matricular Alunos"
+
+#: templates/base.html:40
 msgid "Class Calendar"
 msgstr "Calendário de Aulas"
 
-#: templates/homepage.html:19
-msgid "Log In"
-msgstr "Entrar"
+#: templates/calendar.html:4
+msgid "Calendar"
+msgstr "Calendário"
 
-#: templates/homepage.html:25
+#: templates/class_details.html:4
+msgid "Class Details"
+msgstr "Detalhes da Aula"
+
+#: templates/class_details.html:15 templates/class_details.html:48
+msgid "Instructor"
+msgstr "Instrutor"
+
+#: templates/class_details.html:39
+msgid "Edit Class Information"
+msgstr "Editar Informações da Aula"
+
+#: templates/class_details.html:65 templates/instructor_details.html:46
+#: templates/student_details.html:51
+msgid "The information has been edited"
+msgstr "As informações foram editadas"
+
+#: templates/class_details.html:65 templates/instructor_details.html:46
+#: templates/student_details.html:51
+msgid "edit"
+msgstr "editar"
+
+#: templates/class_details.html:73
+msgid "Delete Class"
+msgstr "Excluir Aula"
+
+#: templates/class_details.html:74 templates/instructor_details.html:54
+#: templates/student_details.html:60
+msgid "Are you sure you want to delete this entry?"
+msgstr "Tem certeza de que deseja excluir esta entrada?"
+
+#: templates/class_stats.html:16
+msgid "Start Date"
+msgstr "Data de Início"
+
+#: templates/class_stats.html:20
+msgid "End Date"
+msgstr "Data de Término"
+
+#: templates/class_stats.html:23
+msgid "submit"
+msgstr "enviar"
+
+#: templates/class_stats.html:29
+msgid "Statistics"
+msgstr "Estatísticas"
+
+#: templates/class_stats.html:34
+msgid "Total of students"
+msgstr "Total de Alunos"
+
+#: templates/enroll-students.html:34
+msgid "enroll"
+msgstr "matricular"
+
+#: templates/homepage.html:13
+msgid "Welcome!"
+msgstr "Bem-vindo!"
+
+#: templates/homepage.html:17
+msgid "Email address"
+msgstr "Endereço de Email"
+
+#: templates/homepage.html:22
 msgid "Password"
 msgstr "Senha"
 
-#: templates/instructor_details.html:13
-msgid "Edit instructor information"
-msgstr "Editar informações do instrutor"
+#: templates/homepage.html:27
+msgid "Remember me"
+msgstr "Lembrar-me"
 
-#: templates/instructor_details.html:27
+#: templates/homepage.html:29
+msgid "Submit"
+msgstr "Enviar"
+
+#: templates/instructor_details.html:4
+msgid "Instructor Details"
+msgstr "Detalhes do Instrutor"
+
+#: templates/instructor_details.html:23
+msgid "Edit Instructor Information"
+msgstr "Editar Informações do Instrutor"
+
+#: templates/instructor_details.html:53
 msgid "Delete Instructor"
-msgstr "Deletar Instrutor"
+msgstr "Excluir Instrutor"
 
-#: templates/student_details.html:14
-msgid "Edit student information"
-msgstr "Editar informações do aluno"
+#: templates/student_details.html:4
+msgid "Student Details"
+msgstr "Detalhes do Aluno"
 
-#: templates/student_details.html:28
+#: templates/student_details.html:24
+msgid "Edit Student Information"
+msgstr "Editar Informações do Aluno"
+
+#: templates/student_details.html:59
 msgid "Delete Student"
-msgstr "Deletar Aluno"
-
+msgstr "Excluir Aluno"

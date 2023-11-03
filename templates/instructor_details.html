@@ -1,31 +1,59 @@
 {% extends 'base.html' %}
 
 
-{% block title %}{{ instructor.instructor_id }} - Details{% endblock %}
+{% block title %}{{ instructor.instructor_id }} - {{ _('Instructor Details') }}{% endblock %}
 
 {% block body %}
-<h1>  {{instructor.first_name}} {{instructor.last_name}}</h1>
-<ul>
-    <li> {{ _('Email') }}: {{instructor.email}}</li>
-    <li> {{ _('Phone') }}: {{instructor.phone}}</li>
-</ul>
-<br>
-<h2> {{ _('Edit instructor information') }}: </h2>
-<form action="/instructors/{{ instructor.instructor_id }}/edit" method="POST">
-    <p> {{ _('First name') }}: <input type="text" name="first_name" value="{{instructor.first_name}}"> </p>
-    <p> {{ _('Last name') }}: <input type="text" name="last_name" value="{{instructor.last_name}}"> </p>
-    <p> {{ _('Email') }}: <input type="text" name="email" value="{{instructor.email}}"> </p>
-    <p> {{ _('Phone') }}: <input type="text" name="phone" value="{{instructor.phone}}"> </p>
-       
+<div class="container text-left">
+    <div class="row input-fx my-4 align-items-center justify-content-center">
+        <div class="col-md-6">
+            <section class="container mt-4">
+                <h1>  {{instructor.first_name}} {{instructor.last_name}}</h1>
+            </section>
 
-    <button type="submit">{{ _('edit') }}</button>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> {{ _('Email') }}: {{instructor.email}}</li>
+                <li class="list-group-item"> {{ _('Phone') }}: {{instructor.phone}}</li>
+            </ul>
+            <br>
+        </div>
 
-</form>
+        <div class="col-md-6">
+            <section class="container mt-4">
+                <h2> {{ _('Edit Instructor Information') }}: </h2>
+            </section>
 
-<hr>
-<form method="POST" action="/instructors/{{ instructor.instructor_id }}/delete">
-    <input type="submit" value="{{ _('Delete Instructor')}}"
-        onClick="return confirm ('Are you sure you want to delete this entry?')">
-</form>
+            <form class="row g-3" action="/instructors/{{ instructor.instructor_id }}/edit" method="POST" id="edit_instructor">
+                <div class="col-md-6">
+                    <label for="first_name" class="form-label">{{ _('First name') }} </label>
+                    <input type="text" class="form-control" name="first_name" value="{{instructor.first_name}}">
+                </div>
+                <div class="col-md-6">
+                    <label for="last_name" class="form-label">{{ _('Last name') }}</label>
+                    <input type="text" class="form-control" name="last_name" value="{{instructor.last_name}}">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inst_email" class="form-label">{{ _('Email') }} </label>
+                    <input type="text" class="form-control" name="email" value="{{instructor.email}}">
+                </div>
+                <div class="col-md-6">
+                    <label for="inst_phone" class="form-label">{{ _('Phone') }} </label>
+                    <input type="text" class="form-control" name="phone" value="{{instructor.phone}}">
+                </div>
+                <div class="col-12 mb-4">
+                    <button type="submit" class="btn btn-dark custom-margin"
+                    onClick="return confirm('{{ _('The information has been edited') }}')">{{ _('edit') }}</button>
+                </div>
+            
+            </form>
+        </div>
+        <hr>
+        <form method="POST" action="/instructors/{{ instructor.instructor_id }}/delete">
+            <input type="submit" class="btn btn-dark custom-margin" value="{{ _('Delete Instructor')}}"
+                onClick="return confirm('{{ _('Are you sure you want to delete this entry?') }}')">
+        </form>
+    </div>  
+</div>
 
 {% endblock %}

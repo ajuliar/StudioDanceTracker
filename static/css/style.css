@@ -26,11 +26,15 @@ h3 {
 }
 
 .custom-margin-carousel {
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .carousel-image {
-  max-width: 70%;
+  max-width: 80%;
   height: auto;
 }
 
+.small-image {
+  max-width: 750px;
+  max-height: 700px; 
+}

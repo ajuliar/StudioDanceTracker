@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Admin {% endblock %}
+{% block title %} {{ _('Admin') }} {% endblock %}
 
 {% block body %}
 <div class="container text-left">
@@ -19,7 +19,7 @@
 
     <form action="/logout" method="POST">
         <p>
-        <button type="submit" class="btn btn-dark"> Logout </button>
+        <button type="submit" class="btn btn-dark"> {{ _('Log out') }} </button>
         </p>
 
     </form>

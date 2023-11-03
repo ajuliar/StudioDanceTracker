@@ -1,48 +1,67 @@
 {% extends 'base.html' %}
 
-{% block title%} Enroll Students {% endblock%}
+{% block title%} {{ _('Enroll Students') }} {% endblock%}
 
 {% block body %}
 <div class="container-fluid d-flex justify-content-center align-items-center">
-<h3> {{ _('Enroll Students') }}: </h3>
-<select id="student-selector">
-    {% for student in students %}
-        <option value="{{student.student_id}}"> {{student.f_name}}</option>
-    {% endfor %}
-</select>
+  <div class="row input-fx my-4">
 
-<select id="class-selector">
-    {% for class in classes %}
-        <option value="{{class.class_id}}"> {{ class.class_name }}</option>
-    {% endfor %}
-</select>
-
-<input id="submit" type="submit" value="{{ _('enroll') }}">
-</div>
-
-
-<div id="carouselExampleAutoplaying" class="carousel slide custom-margin-carousel" data-bs-ride="carousel">
-    <div class="carousel-inner text-center">
-      <div class="carousel-item active">
-        <img src="../static/images/jazz.jpg" class="d-block mx-auto carousel-image" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../static/images/ballet.jpg" class="d-block mx-auto carousel-image" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block mx-auto carousel-image" alt="...">
-      </div>
+    <div class="col-md-2">
+        <h3 class="mb-4"> {{ _('Enroll Students') }}: </h3>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+
+  <div class="col-md-4">
+    <div class="form-group mb-2">
+      <select id="student-selector" class="form-control">
+          {% for student in students %}
+              <option value="{{student.student_id}}"> {{student.f_name}}</option>
+          {% endfor %}
+      </select>
+    </div>
+  </div>  
+
+  <div class="col-md-4">
+    <div class="form-group mb-2">
+      <select id="class-selector" class="form-control">
+          {% for class in classes %}
+              <option value="{{class.class_id}}"> {{ class.class_name }}</option>
+          {% endfor %}
+      </select>
+      </div>
+    </div> 
+
+    <div class="col-md-2">
+      <input id="submit" class="btn btn-dark custom-margin" type="submit" value="{{ _('enroll') }}">
+    </div>
+  
+
+
+<div class="col-md-12">
+  <div id="carouselExampleAutoplaying" class="carousel slide custom-margin-carousel" data-bs-ride="carousel">
+      <div class="carousel-inner text-center">
+        <div class="carousel-item active">
+          <img src="../static/images/2012.jpg" class="d-block mx-auto carousel-image small-image" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="../static/images/2014.jpg" class="d-block mx-auto carousel-image small-image" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="../static/images/group.jpg" class="d-block mx-auto carousel-image small-image" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+  </div>
 </div>
 
+  </div>
+</div>
 
 
 

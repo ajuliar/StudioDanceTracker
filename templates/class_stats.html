@@ -1,21 +1,41 @@
 {% extends 'base.html' %}
 
 
-{% block title %} Class Statistics {% endblock %}
+{% block title %} {{ _('Class Statistics') }} {% endblock %}
 
 {% block body %}
- <h2> {{ _('Class Statistics') }}: </h2>
- <form action="/classes/class-statistics" method="POST">
-    <p> {{ _('Start Date') }}: <input type="date" name="start_date"></p>
-    <p> {{ _('End Date') }}: <input type="date" name="end_date"></p>
+<div class="container text-left">
+    <div class="row input-fx my-4">
+        <div class="col-md-6" >
+            <section class="container mt-2">
+            <h2> {{ _('Class Statistics') }}: </h2>
+            </section>
 
-    <button type="submit">{{ _('submit') }}</button>
-</form>
+            <form action="/classes/class-statistics" method="POST">
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">{{ _('Start Date') }}</span>
+                    <input type="date" class="form-control" name="start_date" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">{{ _('End Date') }}</span>
+                    <input type="date" class="form-control" name="end_date" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+                <button type="submit" class="btn btn-dark custom-margin">{{ _('submit') }}</button>
+            </form>
+        </div>
 
-<h3> {{ _('Statistics') }} </h3>
+    <div class="col-md-6" >
+        <section class="container mt-2">
+        <h3> {{ _('Statistics') }} </h3>
+        </section>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"> {{ _('Start date') }}: {{start_date}} </li>
+            <li class="list-group-item"> {{ _('End date') }}: {{end_date}} </li>
+            <li class="list-group-item"> {{ _('Total of students') }}: {{student_total}} </li>
+            </div>
+        </ul>
 
-    <li> {{ _('Start date') }}: {{start_date}} </li>
-    <li> {{ _('End date') }}: {{end_date}} </li>
-    <li> {{ _('Total of students') }}: {{student_total}} </li>
+    </div>
+</div>
 
 {% endblock %}

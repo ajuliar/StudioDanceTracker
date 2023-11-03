@@ -1,32 +1,63 @@
 {% extends 'base.html' %}
-{% block title %} Instructors {% endblock %}
+{% block title %} {{ _('Instructors') }} {% endblock %}
 
 {% block body %}
-    <h2> {{ _('Instructors') }}: </h2>
-{% for instructor in instructors %}
-<li>
-    <a href="/instructors/{{instructor.instructor_id}}">
-    {{instructor.first_name}} {{instructor.last_name}}
-    </a>
-</li>
-{% endfor %}
-<br>
+<div class="container text-left">
+    <div class="row input-fx my-4">
+        <div class="col-md-6">
 
-<h2> {{ _('Add New Instructor') }}:</h2>
-<form action="/instructors/create-instructor" method="POST" id="create_instructor">
-    <label for="first_name"> {{ _('First name') }} </label>
-    <input type="text" name="first_name" id="first_name">
+            <section class="container mt-4">
+            <h2> {{ _('Instructors') }}: </h2>
+            </section>
+            
+            {% for instructor in instructors %}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="/instructors/{{instructor.instructor_id}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                            {{instructor.first_name}} {{instructor.last_name}}
+                    </a>
+                </li>
+            </ul>
+            {% endfor %}
+            <br>
+        </div>
 
-    <label for="last_name"> {{ _('Last name') }} </label>
-    <input type="text" name="last_name" id="last_name">
+        <div class="col-md-6">
+            <section class="container mt-4">
+            <h2> {{ _('Add New Instructor') }}:</h2>
+            </section>
 
-    <label for="inst_email"> {{ _('Email') }} </label>
-    <input type="text" name="email" id="inst_email">
+            <form class="row g-3" action="/instructors/create-instructor" method="POST" id="create_instructor">
+                <div class="col-md-6">
+                    <label for="first_name" class="form-label">{{ _('First name') }} </label>
+                    <input type="text" class="form-control" name="first_name" id="first_name">
+                </div>
+                <div class="col-md-6">
+                    <label for="last_name" class="form-label">{{ _('Last name') }}</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name">
+                </div>
 
-    <label for="inst_phone"> {{ _('Phone') }} </label>
-    <input type="text" name="phone" id="inst_phone">
-
-    <button type="submit">{{ _('add') }}</button>
-</form>
+                <div class="col-md-6">
+                    <label for="inst_email" class="form-label">{{ _('Email') }} </label>
+                    <input type="text" class="form-control" name="email" id="inst_email">
+                </div>
+                <div class="col-md-6">
+                    <label for="inst_phone" class="form-label">{{ _('Phone') }} </label>
+                    <input type="text" class="form-control" name="phone" id="inst_phone">
+                </div>
+                <div class="col-12 mb-4">
+                    <button type="submit" class="btn btn-dark custom-margin"
+                    onClick="return confirm('{{ _('The instructor has been added') }}')">{{ _('add') }}</button>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
 
 {% endblock %}

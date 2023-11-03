@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title%} Students {% endblock%}
+{% block title%} {{ _('Students') }} {% endblock%}
 
 {% block body %}
 <div class="container text-left">
@@ -55,7 +55,8 @@
             <input type="text" class="form-control" name="phone" id="stu_phone">
         </div>
         <div class="col-12 mb-4">
-            <button type="submit" class="btn btn-dark custom-margin">add</button>
+            <button type="submit" class="btn btn-dark custom-margin"
+            onClick="return confirm('{{ _('The instructor has been added') }}')">{{ _('add') }}</button>
         </div>
         
     </form>

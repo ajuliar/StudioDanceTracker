@@ -36,14 +36,6 @@ def homepage():
     return render_template('homepage.html')
 
 
-@app.route("/admins")
-def get_admin():
-    """View admin info"""
-
-    admins = crud.get_all_admin()
-
-    return render_template ("admin.html", admins=admins)
-
 
 @app.route("/login", methods=["POST"])
 def admin_login():
@@ -74,13 +66,33 @@ def admin_logout():
     return redirect("/")
 
 
+@app.route("/admins")
+def get_admin():
+    """View admin info"""
+
+    if 'current_admin' not in session:
+        flash(gettext("Please log in"))
+        return redirect("/")
+    
+    else:
+
+        admins = crud.get_all_admin()
+
+        return render_template ("admin.html", admins=admins, current_admin=session['current_admin'])
+
 @app.route("/students")
 def all_students():
     """view all students"""
 
-    students = crud.get_all_students()
+    if 'current_admin' not in session:
+        flash(gettext("Please log in"))
+        return redirect("/")
+    
+    else:
 
-    return render_template("all_students.html", students=students)
+        students = crud.get_all_students()
+
+    return render_template("all_students.html", students=students, current_admin=session['current_admin'])
 
 
 @app.route("/students/<student_id>") 
@@ -150,9 +162,15 @@ def delete_student(student_id):
 def all_classes():
     """View all classes"""
 
-    classes = crud.get_all_classes()
+    if 'current_admin' not in session:
+        flash(gettext("Please log in"))
+        return redirect("/")
+    
+    else:
 
-    return render_template("all_classes.html", classes=classes)
+        classes = crud.get_all_classes()
+
+    return render_template("all_classes.html", classes=classes, current_admin=session['current_admin'])
 
 
 @app.route("/classes/<class_id>")
@@ -245,9 +263,15 @@ def class_stat():
 def all_instructors():
     """View all instructors"""
 
-    instructors = crud.get_all_instructors()
+    if 'current_admin' not in session:
+        flash(gettext("Please log in"))
+        return redirect("/")
+    
+    else:
 
-    return render_template("all_instructors.html", instructors=instructors)
+        instructors = crud.get_all_instructors()
+
+    return render_template("all_instructors.html", instructors=instructors, current_admin=session['current_admin'])
 
 
 @app.route("/instructors/<instructor_id>")
@@ -312,10 +336,16 @@ def delete_instructor(instructor_id):
 @app.route("/enroll-students")
 def enroll_students():
 
-    students = crud.get_all_students()
-    classes = crud.get_all_classes()
+    if 'current_admin' not in session:
+        flash(gettext("Please log in"))
+        return redirect("/")
     
-    return render_template("enroll-students.html", students=students, classes=classes)
+    else:
+
+        students = crud.get_all_students()
+        classes = crud.get_all_classes()
+    
+    return render_template("enroll-students.html", students=students, classes=classes, current_admin=session['current_admin'])
 
 @app.route("/enroll-students", methods=["POST"])
 def add_class():
@@ -339,18 +369,23 @@ def add_class():
 
 @app.route("/calendar")
 def calendar():
-    classes = crud.get_all_classes()
-    events = []
-    
-    for a_class in classes:
-        #second loop for day events
-        
-        class_dict = {"title": a_class.class_name,
-                      "start": a_class.start_date,
-                      "end": a_class.end_date}
-        events.append(class_dict)
 
-    return render_template("calendar.html", events=events)
+    if 'current_admin' not in session:
+        flash(gettext("Please log in"))
+        return redirect("/")
+    
+    else:
+        classes = crud.get_all_classes()
+        events = []
+        
+        for a_class in classes:
+            
+            class_dict = {"title": a_class.class_name,
+                        "start": a_class.start_date,
+                        "end": a_class.end_date}
+            events.append(class_dict)
+
+    return render_template("calendar.html", events=events, current_admin=session['current_admin'])
 
 
 
