@@ -63,3 +63,49 @@ Clone this repo into your computers directory:
 ```python
 https://github.com/ajuliar/Dance-Studio--app-project.git
 ```
+
+Create your virtual environment inside your StudioDanceTracker Directory:
+
+```python
+virtualenv env
+```
+
+Install the Requirements:
+
+```python
+ pip install -r requirements.txt
+```
+
+Source your key from your secrets.sh file into your virtual env:
+
+```python
+source secrets.sh
+```
+
+Create your database(db):
+
+```python
+  createdb students
+  python3 -i model.py
+       >>db.create_all()
+```
+
+Add your FullCalendar JavaScript API:
+
+```python
+https://fullcalendar.io/docs/initialize-globals
+```
+
+For internationalization and localization of the app use Flask-Babel:
+
+```python
+https://phrase.com/blog/posts/python-localization-flask-applications/
+```
+
+Run the application:
+
+  ```python
+  python3 server.py
+  ```
+
+You can now access StudioDanceTracker at 'localhost:5000/' and start creating your app!
