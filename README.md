@@ -26,8 +26,6 @@ While she enjoyed the healthcare field and helping patients, she was ready for a
 
 The backend is built in Python and Flask and it was complemented by a user-friendly front-end interface created with HTML, CSS, and JavaScript and I also utilized bootstrap to enhance the user experience and make each page responsive.
 
-![backend](static/videos/Backend - HD 1080p.mov) 
-<video width="320" height="240" controls>
-  <source src="static/videos/Backend - HD 1080p.mov" type="video/mp4">
-</video>
+![backend](static/videos/backend.mp4) 
+
 
