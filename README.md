@@ -26,6 +26,6 @@ While she enjoyed the healthcare field and helping patients, she was ready for a
 
 The backend is built in Python and Flask and it was complemented by a user-friendly front-end interface created with HTML, CSS, and JavaScript and I also utilized bootstrap to enhance the user experience and make each page responsive.
 
-![backend](dance-studio-project/static/videos/backend.mp4) 
+![backend](static/images/backend.gif) 
 
 
