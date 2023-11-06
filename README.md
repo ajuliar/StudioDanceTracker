@@ -1,9 +1,6 @@
 #  StudioDanceTracker
 
-The idea of this project came from a personal motivation to support my sisters, who run a dance studio in Brazil. Understanding their requirement for an effective system to handle classes and student information, the StudioDanceTracker was created. The app is an application designed for the management of student data and class administration within a dance studio environment.
-
-#H2 Table of Contents
-
+The idea of this project came from a personal motivation to support my sisters, who run a dance studio in Brazil. Understanding their requirement for an effective system to handle classes and student information, the **StudioDanceTracker** was created. The app is an application designed for the management of student data and class administration within a dance studio environment.
 
 
 # About Me
@@ -23,3 +20,11 @@ While she enjoyed the healthcare field and helping patients, she was ready for a
 * Jinja2 
 * Bootstrap 
 * Flask-Babel
+
+# Features
+
+
+The backend is built in Python and Flask and it was complemented by a user-friendly front-end interface created with HTML, CSS, and JavaScript and I also utilized bootstrap to enhance the user experience and make each page responsive.
+
+![backend](static/videos/Backend - HD 1080p.mov) 
+
