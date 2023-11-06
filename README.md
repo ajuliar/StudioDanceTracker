@@ -29,3 +29,29 @@ The backend is built in Python and Flask and it was complemented by a user-frien
 ![backend](static/images/backend.gif) 
 
 
+The application allows the admin to interact with the database, managed by PostgreSQL. This includes adding, editing, and deleting students, classes, and instructors. Each class entry contains a list of enrolled students along with details about the respective instructors.
+
+![adding](static/images/adding.gif)
+
+
+I also integrated a feature for generating class statistics, allowing us to analyze student enrollment within specific date ranges. This is done using SQL queries, which instruct the database to retrieve and calculate data giving us the total number of students enrolled during those selected dates.
+
+![backend](static/images/stats.gif)
+
+
+When enrolling a new student, the web page sends a fetch request to the server upon clicking the 'enroll' button. The server processes the JSON-formatted data from the form and responds. The web page then displays an alert with the status and updates the database as needed.
+
+![backend](static/images/enroll.gif)
+
+
+Additionally, I integrated the Full Calendar JavaScript API to provide a visual representation of the class schedule.
+
+![backend](static/images/calendar.gif)
+
+
+For translation of the app I used the Flask-Babel extension that adds internationalization and localization support. The application automatically detects the locale of the user’s browser, and switches between english and portuguese.
+
+![backend](static/images/portuguese.gif)
+
+
+During the project, I adopted an agile approach, closely collaborating with my sisters to gather feedback and ensure the application met their specific needs. I look forward to seeing my sisters using the app in the future.
