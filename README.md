@@ -55,3 +55,11 @@ For translation of the app I used the Flask-Babel extension that adds internatio
 
 
 During the project, I adopted an agile approach, closely collaborating with my sisters to gather feedback and ensure the application met their specific needs. I look forward to seeing my sisters using the app in the future.
+
+# Installing StudioDanceTracker
+
+Clone this repo into your computers directory:
+
+```python
+https://github.com/ajuliar/Dance-Studio--app-project.git
+```
