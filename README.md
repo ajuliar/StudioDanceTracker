@@ -15,11 +15,12 @@ While she enjoyed the healthcare field and helping patients, she was ready for a
 * HTML 
 * CSS 
 * AJAX 
-* PostgreSQL 
 * Flask 
 * Jinja2 
 * Bootstrap 
+* PostgreSQL 
 * Flask-Babel
+* FullCalendar API
 
 # Features
 
