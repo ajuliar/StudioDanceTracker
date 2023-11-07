@@ -77,12 +77,6 @@ Install the Requirements:
  pip install -r requirements.txt
 ```
 
-Source your key from your secrets.sh file into your virtual env:
-
-```python
-source secrets.sh
-```
-
 Create your database(db):
 
 ```python
